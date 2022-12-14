@@ -1,8 +1,9 @@
+//using require to be able to use objects from licenseSections file in renderLicenseSection function
 const licenseSections = require('./licenseSections.js')
 // TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
 function renderLicenseBadge(license) {
   console.log(license)
+  //passing in license user chose from multiple choice
   switch (license) {
     case 'Apache':
       return '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
@@ -18,6 +19,7 @@ function renderLicenseBadge(license) {
       return '[![License: WTFPL](https://img.shields.io/badge/License-WTFPL-brightgreen.svg)](http://www.wtfpl.net/about/)'
     case 'The Unlicense':
       return '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)'
+    // If there is no license, return an empty string
     case 'None':
       return ''
   }
@@ -25,8 +27,8 @@ function renderLicenseBadge(license) {
 
 renderLicenseBadge()
 // TODO: Create a function that returns the license link
-// If there is no license, return an empty string
 function renderLicenseLink(license) {
+  //passing in license user chose from multiple choice
   switch (license) {
     case 'Apache':
       return '[https://opensource.org/licenses/Apache-2.0](https://opensource.org/licenses/Apache-2.0)'
@@ -42,6 +44,7 @@ function renderLicenseLink(license) {
       return '[http://www.wtfpl.net/about/](http://www.wtfpl.net/about/)'
     case 'The Unlicense':
       return '[http://unlicense.org/](http://unlicense.org/)'
+    // If there is no license, return an empty string
     case 'None':
       return ''
   }
@@ -49,21 +52,28 @@ function renderLicenseLink(license) {
 
 renderLicenseLink()
 // TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
 function renderLicenseSection(license) {
+  //passing in license user chose from multiple choice
   switch (license) {
+    //Using Apache object from licenseSections file
     case 'Apache':
       return licenseSections.Apache
+    //Using Boost object from licenseSections file
     case 'Boost':
       return licenseSections.Boost
+    //Using MIT object from licenseSections file
     case 'MIT':
       return licenseSections.MIT
+    //Using Zlib object from licenseSections file
     case 'Zlib':
       return licenseSections.Zlib
+    //Using WTFPL object from licenseSections file
     case 'WTFPL':
       return licenseSections.WTFPL
+    //Using theUnlicense object from licenseSections file
     case 'The Unlicense':
       return licenseSections.theUnlicense
+    // If there is no license, return an empty string
     case 'none':
       return ''
   }
@@ -71,6 +81,7 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+  //variables represent functions with correct items passed in 
   var licenseBadge = renderLicenseBadge(data.license)
   var licenseLink = renderLicenseLink(data.license)
   var licenseSection = renderLicenseSection(data.license)
@@ -83,9 +94,10 @@ function generateMarkdown(data) {
   ## Description
 
   \n${data.descriptionWhat}
-  \n${data.descriptionWhy}
-  \n${data.descriptionSolution}
-  \n${data.descriptionLearn}
+  ${data.descriptionWhy}
+  ${data.descriptionSolution}
+  ${data.descriptionLearn}
+
 
   ## Table of Contents
 
@@ -106,7 +118,6 @@ function generateMarkdown(data) {
 
   ## Credits
 
-  \n${data.creditCollaborators}
   \n${data.creditThirdPartyAssets}
   \n${data.creditTutorials}
 
@@ -122,6 +133,7 @@ function generateMarkdown(data) {
 
   ## Contributions
 
+  \n${data.creditCollaborators}
   \n${data.howToContribute}
 
   ## Tests

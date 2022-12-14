@@ -1,3 +1,5 @@
+//Created an object with license names and license sections as key:value pairs 
+//using keys in generateMarkdown file
 const licenseSections = {
 
 Apache : `Copyright [yyyy] [name of copyright owner]
